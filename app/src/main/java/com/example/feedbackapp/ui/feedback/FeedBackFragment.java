@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -50,6 +51,9 @@ public class FeedBackFragment extends Fragment {
     //textview
     private TextView textViewClass;
     private TextView textViewModule;
+    //Button
+    private Button showDetail;
+
     //to send data
 
     public static FeedBackFragment newInstance() {
@@ -101,6 +105,17 @@ public class FeedBackFragment extends Fragment {
         // set content for textview class and module
         this.textViewClass = (TextView)v.findViewById(R.id.textViewClass);
         this.textViewModule = (TextView)v.findViewById(R.id.textViewModule);
+        // Click event for button View Detail
+        showDetail = (Button) v.findViewById(R.id.show_detail);
+        this.showDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("class", spinner.getSelectedItemPosition());
+                bundle.putInt("module",spinnerModule.getSelectedItemPosition());
+                Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail, bundle);
+            }
+        });
         // When user select a List-Item on spinner Class
         this.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -167,12 +182,11 @@ public class FeedBackFragment extends Fragment {
                         int lassSelected =spinner.getSelectedItemPosition();
                         int moduleSelected = spinnerModule.getSelectedItemPosition();
                        // code
-
-                        //o_onchange = lassSelected;
                         Bundle bundle = new Bundle();
                         bundle.putInt("class", lassSelected);
                         bundle.putInt("module",moduleSelected);
                         Navigation.findNavController(v).navigate(R.id.action_fragment1_to_fragment2, bundle);
+                      //Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail);
 
                     }
 

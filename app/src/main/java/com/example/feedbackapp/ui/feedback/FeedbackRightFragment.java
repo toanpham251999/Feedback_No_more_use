@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -45,7 +46,7 @@ public class FeedbackRightFragment extends Fragment {
     private List<Class> classes;
     private List<Module> modules;
     private FeedbackRightViewModel mViewModel;
-    private  View v;
+    private Button showDetail;
     //to send data
     private  FeedackViewModel viewModel;
     public static FeedbackRightFragment newInstance() {
@@ -87,7 +88,17 @@ public class FeedbackRightFragment extends Fragment {
 
         this.spinner.setSelection(getArguments().getInt("class", 0));
         this.spinnerModule.setSelection(getArguments().getInt("module", 0));
-
+// Click event for button View Detail
+        showDetail = (Button) v.findViewById(R.id.show_detail);
+        this.showDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("class", spinner.getSelectedItemPosition());
+                bundle.putInt("module",spinnerModule.getSelectedItemPosition());
+                Navigation.findNavController(v).navigate(R.id.action_feedbackright_to_feedbackdetail, bundle);
+            }
+        });
 
 
         // When user select a List-Item on spinner Class

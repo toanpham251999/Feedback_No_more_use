@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_fragment1_to_fragment2"
             app:destination="@id/nav_feedbackright" />
+        <action
+            android:id="@+id/action_feedback_to_feedbackdetail"
+            app:destination="@id/nav_feedbackdetail" />
 
     </fragment>
     <fragment
@@ -60,6 +63,17 @@
         <action
             android:id="@+id/action_fragment2_to_fragment1"
             app:destination="@id/nav_feedback" />
+        <action
+            android:id="@+id/action_feedbackright_to_feedbackdetail"
+            app:destination="@id/nav_feedbackdetail" />
+
     </fragment>
+    <fragment
+        android:id="@+id/nav_feedbackdetail"
+        android:name="com.example.feedbackapp.ui.feedback.FeedbackDetailFragment"
+        tools:layout="@layout/fragment_feedback_detail" />
+    <action
+        android:id="@+id/action_feedbackdetail_to_feedback"
+        app:destination="@id/nav_feedback" />
 
 </navigation>
