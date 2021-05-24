@@ -23,11 +23,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="331dp"
-        android:layout_height="426dp"
+        android:layout_width="369dp"
+        android:layout_height="423dp"
         android:layout_marginTop="50dp"
-        android:layout_marginStart="36dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_assignment">
 
@@ -41,8 +41,8 @@
         <Spinner
             android:id="@+id/spinner_module"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -61,7 +61,7 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:text="Trainer ID:"
             android:textColor="@color/black" />
@@ -69,7 +69,7 @@
         <Spinner
             android:id="@+id/spinner_trainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,6 +83,7 @@
                 android:layout_marginStart="92dp"
                 android:layout_marginTop="32dp"
                 android:layout_weight="1"
+                android:backgroundTint="#5F78FF"
                 android:text="Save"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
                 android:layout_weight="1"
+                android:backgroundTint="#FF3B3B"
                 android:text="Back"
                 app:layout_constraintStart_toEndOf="@+id/btn_Save"
                 app:layout_constraintTop_toTopOf="@+id/btn_Save" />

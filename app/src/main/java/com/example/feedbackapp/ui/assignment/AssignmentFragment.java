@@ -60,20 +60,19 @@ public class AssignmentFragment extends Fragment {
                 AddAssignmentFragment addAssignmentFragment = new AddAssignmentFragment();
                 addAssignmentFragment.setArguments(bundle);
 
-                Navigation.findNavController(root).navigate(R.id.assignment_to_addassignment);
+                Navigation.findNavController(root).navigate(R.id.assignment_to_add_assignment, bundle);
+            }
+        });
+        btn_Search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("key","abc"); // Put anything what you want
 
-//                getActivity().getSupportFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.assignment_container , addAssignmentFragment)
-//                        .addToBackStack(null)
-//                        .commit();
+                AddAssignmentFragment addAssignmentFragment = new AddAssignmentFragment();
+                addAssignmentFragment.setArguments(bundle);
 
-                //getActivity().getSupportFragmentManager().popBackStack();
-
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.content, addAssignmentFragment)
-//                        .commit();
+                Navigation.findNavController(root).navigate(R.id.assignment_to_search_assignment, bundle);
             }
         });
     }

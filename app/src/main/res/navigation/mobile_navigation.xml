@@ -9,21 +9,32 @@
         android:id="@+id/nav_homepage"
         android:name="com.example.feedbackapp.ui.homepage.HomePageFragment"
         tools:layout="@layout/fragment_homepage" />
-
     <fragment
         android:id="@+id/nav_assignment"
         android:name="com.example.feedbackapp.ui.assignment.AssignmentFragment"
         tools:layout="@layout/fragment_assignment">
 
         <action
-            android:id="@+id/assignment_to_addassignment"
+            android:id="@+id/assignment_to_add_assignment"
             app:destination="@+id/nav_add_assignment"/>
+        <action
+            android:id="@+id/assignment_to_search_assignment"
+            app:destination="@+id/nav_search_assignment"/>
     </fragment>
-
+    <fragment
+        android:id="@+id/nav_search_assignment"
+        android:name="com.example.feedbackapp.ui.assignment.SearchAssignmentFragment"
+        tools:layout="@layout/fragment_search_assignment">
+    </fragment>
     <fragment
         android:id="@+id/nav_add_assignment"
         android:name="com.example.feedbackapp.ui.assignment.AddAssignmentFragment"
-        tools:layout="@layout/fragment_add_assignment" />
+        tools:layout="@layout/fragment_add_assignment">
+
+        <action
+            android:id="@+id/add_assignment_to_assignment"
+            app:destination="@+id/nav_assignment"/>/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_classs"

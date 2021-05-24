@@ -59,7 +59,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:background="#FD3C01"
         android:backgroundTint="#FD3C01"
         android:text="Search"
         app:layout_constraintStart_toEndOf="@+id/editText_Search"
