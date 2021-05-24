@@ -7,7 +7,7 @@
     tools:context=".ui.assignment.AssignmentFragment">
 
     <TextView
-        android:id="@+id/text_assignment"
+        android:id="@+id/text_question"
         android:layout_width="251dp"
         android:layout_height="55dp"
         android:layout_marginStart="52dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assignmentList"
+        android:id="@+id/questionList"
         android:layout_width="412dp"
         android:layout_height="273dp"
         android:layout_marginBottom="372dp"
@@ -30,17 +30,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Search"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/activity_assignment_item" />
+        tools:listitem="@layout/assignment_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_assignment"
+        android:id="@+id/btn_add_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#3770FF"
         android:contentDescription="add_assignment"
         android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="@+id/text_assignment"
-        app:layout_constraintStart_toEndOf="@+id/text_assignment" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_question"
+        app:layout_constraintStart_toEndOf="@+id/text_question" />
 
     <EditText
         android:id="@+id/editText_Search"
@@ -52,7 +52,7 @@
         android:inputType="textPersonName"
         android:hint="Search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_assignment" />
+        app:layout_constraintTop_toBottomOf="@+id/text_question" />
 
     <Button
         android:id="@+id/btn_Search"

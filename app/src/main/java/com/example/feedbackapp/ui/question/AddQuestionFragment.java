@@ -1,33 +1,37 @@
-package com.example.feedbackapp.ui.assignment;
+package com.example.feedbackapp.ui.question;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Spinner;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
 import com.example.feedbackapp.R;
+import com.example.feedbackapp.ui.question.AddQuestionFragment;
+import com.example.feedbackapp.ui.question.QuestionViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AddAssignmentFragment#newInstance} factory method to
+ * Use the {@link AddQuestionFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AddAssignmentFragment extends Fragment {
+public class AddQuestionFragment extends Fragment {
 
-    private AssignmentViewModel assignmentViewModel;
+    private QuestionViewModel questionViewModel;
 
     // TODO: Control Varible
-    Spinner spinner_module, spinner_class, spinner_trainer;
+    Spinner spinner_Topic;
+    EditText editText_questionContent;
     Button btn_Save, btn_Back;
 
-    public AddAssignmentFragment() {
+    public AddQuestionFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +41,11 @@ public class AddAssignmentFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AddAssignmentFragment.
+     * @return A new instance of fragment AddQuestionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AddAssignmentFragment newInstance(String param1, String param2) {
-        AddAssignmentFragment fragment = new AddAssignmentFragment();
+    public static AddQuestionFragment newInstance(String param1, String param2) {
+        AddQuestionFragment fragment = new AddQuestionFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -55,14 +59,12 @@ public class AddAssignmentFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        assignmentViewModel =
-                new ViewModelProvider(this).get(AssignmentViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_add_assignment, container, false);
+        questionViewModel =
+                new ViewModelProvider(this).get(QuestionViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_add_question, container, false);
         addEvents(root);
-
         // Inflate the layout for this fragment
         Bundle bundle = getArguments();
         String strtext = "";
@@ -82,10 +84,10 @@ public class AddAssignmentFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("key","abc"); // Put anything what you want
 
-                AddAssignmentFragment addAssignmentFragment = new AddAssignmentFragment();
-                addAssignmentFragment.setArguments(bundle);
+                AddQuestionFragment addQuestionFragment = new AddQuestionFragment();
+                addQuestionFragment.setArguments(bundle);
 
-                Navigation.findNavController(root).navigate(R.id.add_assignment_to_assignment, bundle);
+                Navigation.findNavController(root).navigate(R.id.add_question_to_question, bundle);
             }
         });
 
@@ -95,18 +97,17 @@ public class AddAssignmentFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("key","abc"); // Put anything what you want
 
-                AddAssignmentFragment addAssignmentFragment = new AddAssignmentFragment();
-                addAssignmentFragment.setArguments(bundle);
+                AddQuestionFragment addQuestionFragment = new AddQuestionFragment();
+                addQuestionFragment.setArguments(bundle);
 
-                Navigation.findNavController(root).navigate(R.id.add_assignment_to_assignment, bundle);
+                Navigation.findNavController(root).navigate(R.id.add_question_to_question, bundle);
             }
         });
     }
 
     private void addControls(View root) {
-        spinner_module = (Spinner) root.findViewById(R.id.spinner_Topic);
-        spinner_class = (Spinner) root.findViewById(R.id.spinner_class);
-        spinner_trainer = (Spinner) root.findViewById(R.id.spinner_trainer);
+        editText_questionContent = root.findViewById(R.id.editText_questionContent);
+        spinner_Topic = root.findViewById(R.id.spinner_Topic);
         btn_Save = (Button) root.findViewById(R.id.btn_Save);
         btn_Back = (Button) root.findViewById(R.id.btn_Back);
     }

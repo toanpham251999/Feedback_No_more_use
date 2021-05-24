@@ -22,7 +22,7 @@ public class AssignmentFragment extends Fragment {
 
     private AssignmentViewModel assignmentViewModel;
 
-    //Control Varible
+    // TODO: Control Varible
     FloatingActionButton btn_Add_Assignment;
     Button btn_Search;
     EditText editText_Search;
@@ -32,7 +32,7 @@ public class AssignmentFragment extends Fragment {
         assignmentViewModel =
                 new ViewModelProvider(this).get(AssignmentViewModel.class);
         View root = inflater.inflate(R.layout.fragment_assignment, container, false);
-        final TextView textView = root.findViewById(R.id.text_assignment);
+        final TextView textView = root.findViewById(R.id.text_question);
         assignmentViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -44,7 +44,7 @@ public class AssignmentFragment extends Fragment {
     }
 
     private void addControls(View root){
-        btn_Add_Assignment = root.findViewById(R.id.btn_add_assignment);
+        btn_Add_Assignment = root.findViewById(R.id.btn_add_question);
         btn_Search = root.findViewById(R.id.btn_Search);
         editText_Search = root.findViewById(R.id.editText_Search);
     }
