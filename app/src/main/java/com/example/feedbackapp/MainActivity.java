@@ -3,10 +3,15 @@ package com.example.feedbackapp;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
+
 
 import com.example.feedbackapp.ui.feedback.FeedBackFragment;
 import com.example.feedbackapp.ui.feedback.FeedbackAdapter;
 import com.example.feedbackapp.ui.feedback.FeedbackModel;
+
+import com.example.feedbackapp.UserInfo.UserInfo;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -58,11 +63,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+        //hiện thông tin người dùng sau khi đăng nhập, dùng để test
+        ShowUserData();
+
     }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    //hàm này để thử xem dữ liệu như token, username, có lưu lại được không
+    public void ShowUserData(){
+        UserInfo userInfo = new UserInfo(getApplicationContext());
+        String toastValue = "token: " + userInfo.token() +
+                "\n username: " + userInfo.username() +
+                "\n login time: " + userInfo.loginTime() +
+                "\n remember: " + userInfo.isExpired();
+        Toast.makeText(getApplicationContext(),toastValue,Toast.LENGTH_LONG).show();
     }
 }
