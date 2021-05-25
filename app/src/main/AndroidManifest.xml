@@ -23,7 +23,9 @@
 
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.FeedBackApp.NoActionBar"></activity>
+            android:theme="@style/Theme.FeedBackApp.NoActionBar">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.FeedBackApp.NoActionBar">
