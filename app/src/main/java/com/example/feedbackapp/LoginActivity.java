@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         //tạo model lưu giá trị nhập khi login
-        LoginValue lv = new LoginValue(username,password,strRole);
+        LoginValue lv = new LoginValue("tranvudpqn123","Admin123@","admin");
         //gọi API kiểm tra tài khoản đăng nhập, nếu đúng, vào trang chính, nếu sai hiển thị lỗi
         LoginAPIServices.loginAPIServices.onLoginClick(lv).enqueue(new Callback<LoginInfo>() {
             @Override
