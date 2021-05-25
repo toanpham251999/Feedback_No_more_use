@@ -75,5 +75,9 @@
     <action
         android:id="@+id/action_feedbackdetail_to_feedback"
         app:destination="@id/nav_feedback" />
+    <fragment
+        android:id="@+id/nav_dofeedback"
+        android:name="com.example.feedbackapp.ui.feedback.DoFeedbackFragment"
+        tools:layout="@layout/fragment_do_feedback" />
 
 </navigation>

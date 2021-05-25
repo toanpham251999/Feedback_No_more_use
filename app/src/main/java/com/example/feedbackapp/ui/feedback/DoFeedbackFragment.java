@@ -3,12 +3,21 @@ package com.example.feedbackapp.ui.feedback;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.feedbackapp.Adapter.ClassDataUtils;
 import com.example.feedbackapp.R;
+import com.example.feedbackapp.model.HeaderRecycleView;
+import com.example.feedbackapp.model.Topic;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,10 +66,40 @@ public class DoFeedbackFragment extends Fragment {
         }
     }
 // My declare parameter
+    // Initialize variable
+    RecyclerView rcvListTopic;
+    ArrayList<Topic> arrayListTopic;
+    HeaderRecycleView headerRecycleView;
+    LinearLayoutManager layoutManagerTopic;
+    TopicAdp adapterTopic;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_do_feedback, container, false);
+        View v = inflater.inflate(R.layout.fragment_do_feedback, container, false);
+
+// Code for rycycle view
+        //Assign variable
+        rcvListTopic = v.findViewById(R.id.rcvListTopic);
+
+        // Using for loop to add multiple group
+        arrayListTopic = new ArrayList<>();
+        arrayListTopic = ClassDataUtils.getTopic();
+        headerRecycleView = ClassDataUtils.getHeaderRecycleView();
+       /* for (int i = 1; i <=10;i++)
+        {
+            arrayListTopic.add("Topic " + (i - 1));
+        }*/
+        //Initialize topic adapter
+        adapterTopic = new TopicAdp(getActivity(), arrayListTopic, headerRecycleView);
+        // Initailize layout manager
+        layoutManagerTopic = new LinearLayoutManager(getContext());
+        // Set layout manager
+        rcvListTopic.setLayoutManager(layoutManagerTopic);
+        //set adapter
+        rcvListTopic.setAdapter(adapterTopic);
+
+        return v;
     }
 }

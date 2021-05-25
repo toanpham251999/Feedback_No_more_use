@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.feedbackapp.Adapter.ClassDataUtils;
 import com.example.feedbackapp.Adapter.CustomAdapter;
@@ -65,7 +66,7 @@ public class FeedBackFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.feedback_fragment, container, false);
 
-        // Code for spinner class
+// Code for spinner class
         // Data:
         this.classess = ClassDataUtils.getClasss();
 
@@ -93,7 +94,7 @@ public class FeedBackFragment extends Fragment {
                 this.modules);
 
         this.spinnerModule.setAdapter(adapterModule);
-        // get data from feedbackrightfragment
+// get data from feedbackrightfragment
         try{
         this.spinner.setSelection(getArguments().getInt("class"));
         this.spinnerModule.setSelection(getArguments().getInt("module"));
@@ -102,10 +103,10 @@ public class FeedBackFragment extends Fragment {
 
         }
 
-        // set content for textview class and module
+// set content for textview class and module
         this.textViewClass = (TextView)v.findViewById(R.id.textViewClass);
         this.textViewModule = (TextView)v.findViewById(R.id.textViewModule);
-        // Click event for button View Detail
+// Click event for button View Detail
         showDetail = (Button) v.findViewById(R.id.show_detail);
         this.showDetail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,25 +114,24 @@ public class FeedBackFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("class", spinner.getSelectedItemPosition());
                 bundle.putInt("module",spinnerModule.getSelectedItemPosition());
-                Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail, bundle);
+                //Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail, bundle);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_feedbackdetail, bundle);
             }
         });
-        // When user select a List-Item on spinner Class
+// When user select a List-Item on spinner Class
         this.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 onItemSelectedHandler(parent, view, position, id);
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
-        // When user select a List-Item on spinner Module
+// When user select a List-Item on spinner Module
         this.spinnerModule.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -144,26 +144,8 @@ public class FeedBackFragment extends Fragment {
 
             }
         });
-        //Chart using MPAndroidChart
-        pieChart = (PieChart)v.findViewById(R.id.PieChart);
-        pieChart.setDescription("");
-        pieChart.setRotationEnabled(false);  //cho phép xoay
-        pieChart.setHoleRadius(0f);         //tên của chart, được viết trong 1 vòng tròn ở giữa chart với bán kính này
-        pieChart.setTransparentCircleAlpha(0);  // vòng tròng trong suốt, chắc để tạo thêm hiệu ứng cho đẹp?
-        pieChart.setDrawEntryLabels(false);// hide lable
 
-
-        // Legend
-        Legend l = pieChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setDrawInside(false);
-        l.setTextSize(15);
-        l.setEnabled(true);
-        addDataSet();
-
-        //Swipe right
+//Swipe right
         //onTouch1(v,MotionEvent );
         v.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -185,24 +167,62 @@ public class FeedBackFragment extends Fragment {
                         Bundle bundle = new Bundle();
                         bundle.putInt("class", lassSelected);
                         bundle.putInt("module",moduleSelected);
-                        Navigation.findNavController(v).navigate(R.id.action_fragment1_to_fragment2, bundle);
+                        //Navigation.findNavController(v).navigate(R.id.action_fragment1_to_fragment2, bundle);
                       //Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail);
-
+                        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_feedbackright, bundle);
+                    }
+                    else{
+                        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_dofeedback);
                     }
 
                 }
-               // onDestroyView();
+//Chart using MPAndroidChart
+                pieChart = (PieChart)v.findViewById(R.id.PieChart);
+                pieChart.setDescription("");
+                pieChart.setRotationEnabled(false);  //cho phép xoay
+                pieChart.setHoleRadius(0f);         //tên của chart, được viết trong 1 vòng tròn ở giữa chart với bán kính này
+                pieChart.setTransparentCircleAlpha(0);  // vòng tròng trong suốt, chắc để tạo thêm hiệu ứng cho đẹp?
+                pieChart.setDrawEntryLabels(false);// hide lable
+
+
+                // Legend
+                Legend l = pieChart.getLegend();
+                l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+                l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+                l.setOrientation(Legend.LegendOrientation.VERTICAL);
+                l.setDrawInside(false);
+                l.setTextSize(15);
+                l.setEnabled(true);
+                addDataSet();
+
+                // onDestroyView();
                 return true;
             }
         });
-        //Test
+
+//Chart using MPAndroidChart
+        pieChart = (PieChart)v.findViewById(R.id.PieChart);
+        pieChart.setDescription("");
+        pieChart.setRotationEnabled(false);  //cho phép xoay
+        pieChart.setHoleRadius(0f);         //tên của chart, được viết trong 1 vòng tròn ở giữa chart với bán kính này
+        pieChart.setTransparentCircleAlpha(0);  // vòng tròng trong suốt, chắc để tạo thêm hiệu ứng cho đẹp?
+        pieChart.setDrawEntryLabels(false);// hide lable
+        // Legend
+        Legend l = pieChart.getLegend();
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.CENTER);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+        l.setDrawInside(false);
+        l.setTextSize(15);
+        l.setEnabled(true);
+        addDataSet();
 
         // return view
         return v;
     }
     //Handler to send data
 
-    // handler click spinner
+// handler click spinner
         // Class
     private void onItemSelectedHandler(AdapterView<?> adapterView, View view, int position, long id) {
         Adapter adapter = adapterView.getAdapter();
@@ -212,7 +232,7 @@ public class FeedBackFragment extends Fragment {
         textViewClass.setText(Html.fromHtml(a));
     }
 
-        // module
+// module
         private void onItemSelectedHandlerModule(AdapterView<?> adapterView, View view, int position, long id) {
             Adapter adapter = adapterView.getAdapter();
             Module module = (Module) adapter.getItem(position);
@@ -227,17 +247,21 @@ public class FeedBackFragment extends Fragment {
         mViewModel = new ViewModelProvider(this).get(FeedackViewModel.class);
         // TODO: Use the ViewModel
     }
-    //Set data for chart
+//Set data for chart
     private void addDataSet() {
         //database = openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE,null);
         ArrayList<String> status = new ArrayList<>();
         status.add("Strongly Disagree");
         status.add("Disgree");
         status.add("Neutral");
+        status.add("Agree");
+        status.add("Strong Agree");
         ArrayList<Integer> count = new ArrayList<>();
         count.add(5);
         count.add(4);
         count.add(1);
+        count.add(0);
+        count.add(0);
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
         Integer sum = 10;
 
@@ -255,22 +279,18 @@ public class FeedBackFragment extends Fragment {
         for(int i=0;i<status.size();i++){
             yEntrys.add(new PieEntry( (float)count.get(i)/sum*100,status.get(i)));
         }
-
         PieDataSet pieDataSet = new PieDataSet(yEntrys,"");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(5);
-
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.parseColor("#f2afa9"));
         colors.add(Color.parseColor("#f27c71"));
         colors.add(Color.parseColor("#FF6600"));
-        //colors.add(Color.GREEN);
-        //colors.add(Color.YELLOW);
+        colors.add(Color.parseColor("#F75536"));
+        colors.add(Color.parseColor("#FC2E05"));
         pieDataSet.setColors(colors);
-
         PieData pieData = new PieData(pieDataSet);
         pieData.setValueFormatter(new PercentFormatter());
-        //pieData.setDrawValues(false);
         pieData.setValueTextColor(Color.WHITE);
         pieData.setValueTextSize(13);
         pieChart.setData(pieData);

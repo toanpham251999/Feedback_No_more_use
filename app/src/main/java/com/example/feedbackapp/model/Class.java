@@ -1,6 +1,6 @@
 package com.example.feedbackapp.model;
 
-public class Class {
+public class    Class {
     int ClassID;
     String ClassName;
     String AdminID;

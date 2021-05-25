@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -23,8 +26,11 @@ import com.example.feedbackapp.Adapter.CustomAdapter;
 import com.example.feedbackapp.Adapter.CustomApdapterModule;
 import com.example.feedbackapp.R;
 import com.example.feedbackapp.model.Class;
+import com.example.feedbackapp.model.HeaderRecycleView;
 import com.example.feedbackapp.model.Module;
+import com.example.feedbackapp.model.Topic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,6 +63,12 @@ public class FeedbackDetailFragment extends Fragment {
      */
 
     //My parameters
+    // Initialize variable
+    RecyclerView rcvDetail;
+    ArrayList<Topic> arrayListTopic;
+    LinearLayoutManager layoutManagerTopic;
+    TopicAdpDetail adapterTopic;
+
     private Spinner spinner;// for clss
     private Spinner spinnerModule;
     private List<Class> classes;
@@ -86,12 +98,13 @@ public class FeedbackDetailFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+// Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_feedback_detail, container, false);
-        // Code for spinner class
+// Code for spinner class
         // Data:
         this.classes = ClassDataUtils.getClasss();
         this.spinner = (Spinner) v.findViewById(R.id.spinner_class);
@@ -121,7 +134,7 @@ public class FeedbackDetailFragment extends Fragment {
         this.spinner.setSelection(getArguments().getInt("class", 0));
         this.spinnerModule.setSelection(getArguments().getInt("module", 0));
 
-        // Click event for button View Detail
+// Click event for button View Detail
         showOverview = (Button) v.findViewById(R.id.show_overview);
         this.showOverview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +142,8 @@ public class FeedbackDetailFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("class", spinner.getSelectedItemPosition());
                 bundle.putInt("module",spinnerModule.getSelectedItemPosition());
-                Navigation.findNavController(v).navigate(R.id.action_feedbackdetail_to_feedback, bundle);
+                //Navigation.findNavController(v).navigate(R.id.action_feedbackdetail_to_feedback, bundle);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_feedback, bundle);
             }
         });
 
@@ -144,7 +158,7 @@ public class FeedbackDetailFragment extends Fragment {
                 //Navigation.findNavController(v).navigate(R.id.action_feedback_to_feedbackdetail, bundle);
             }
         });
-        // When user select a List-Item on spinner Class
+// When user select a List-Item on spinner Class
         this.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -158,7 +172,7 @@ public class FeedbackDetailFragment extends Fragment {
             }
         });
         //spinner.setSelection(o_onchange);
-        // When user select a List-Item on spinner Module
+// When user select a List-Item on spinner Module
         this.spinnerModule.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -171,11 +185,30 @@ public class FeedbackDetailFragment extends Fragment {
 
             }
         });
+// For lisstview
 
+// Code for rycycle view
+        //Assign variable
+        rcvDetail = v.findViewById(R.id.rcvDetail);
 
+        // Using for loop to add multiple group
+        arrayListTopic = new ArrayList<>();
+        arrayListTopic = ClassDataUtils.getTopicForDetail();
+       /* for (int i = 1; i <=10;i++)
+        {
+            arrayListTopic.add("Topic " + (i - 1));
+        }*/
+        //Initialize topic adapter
+        adapterTopic = new TopicAdpDetail(getActivity(), arrayListTopic);
+        // Initailize layout manager
+        layoutManagerTopic = new LinearLayoutManager(getContext());
+        // Set layout manager
+        rcvDetail.setLayoutManager(layoutManagerTopic);
+        //set adapter
+        rcvDetail.setAdapter(adapterTopic);
         return v;
     }
-    // handler click spinner
+// handler click spinner
     // Class
     private void onItemSelectedHandler(AdapterView<?> adapterView, View view, int position, long id) {
         Adapter adapter = adapterView.getAdapter();
@@ -183,13 +216,11 @@ public class FeedbackDetailFragment extends Fragment {
         String itemName = clas.getClassName();
     }
 
-    // module
+// module
     private void onItemSelectedHandlerModule(AdapterView<?> adapterView, View view, int position, long id) {
         Adapter adapter = adapterView.getAdapter();
         Module module = (Module) adapter.getItem(position);
         String itemModule =module.getModuleName();
     }
-    // handler for zoom in/out
-
 
 }

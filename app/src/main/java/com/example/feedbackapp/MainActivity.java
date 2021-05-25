@@ -21,6 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 //Test and delete
@@ -48,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_homepage, R.id.nav_assignment, R.id.nav_classs, R.id.nav_module,R.id.nav_enrrollment, R.id.nav_feedback,
-                R.id.nav_result, R.id.nav_question, R.id.nav_contact, R.id.nav_logout)
+                R.id.nav_result, R.id.nav_question, R.id.nav_contact, R.id.nav_logout, R.id.nav_feedbackright, R.id.nav_feedbackdetail)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);// điều hướng đến  fragment nav_host_fragment trong layout content_main
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-   //Xoa
+//Code to zoom
         gestureDetector = new GestureDetector(this, new GestureListener());
 
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleGestureDetector.SimpleOnScaleGestureListener(){
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 ScaleAnimation scaleAnimation = new ScaleAnimation(1f / prevScale, 1f / mScale, 1f / prevScale, 1f / mScale, detector.getFocusX(), detector.getFocusY());
                 scaleAnimation.setDuration(0);
                 scaleAnimation.setFillAfter(true);
-                ScrollView layout = (ScrollView) findViewById(R.id.scroll_View);
+                RecyclerView layout = (RecyclerView) findViewById(R.id.rcvDetail);
                 layout.startAnimation(scaleAnimation);
                 return true;
             }

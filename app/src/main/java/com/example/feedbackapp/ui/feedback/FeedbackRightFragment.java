@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.feedbackapp.Adapter.ClassDataUtils;
 import com.example.feedbackapp.Adapter.CustomAdapter;
@@ -38,7 +39,6 @@ public class FeedbackRightFragment extends Fragment {
     //swipe left
     float x1, x2, y1 , y2;
     //chart
-
     PieChart pieChart, pieChart1, pieChart2, pieChart3 ;
     //declare for spinner
     private Spinner spinner;// for clss
@@ -96,10 +96,10 @@ public class FeedbackRightFragment extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("class", spinner.getSelectedItemPosition());
                 bundle.putInt("module",spinnerModule.getSelectedItemPosition());
-                Navigation.findNavController(v).navigate(R.id.action_feedbackright_to_feedbackdetail, bundle);
+                //Navigation.findNavController(v).navigate(R.id.action_feedbackright_to_feedbackdetail, bundle);
+                NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_feedbackdetail, bundle);
             }
         });
-
 
         // When user select a List-Item on spinner Class
         this.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -111,7 +111,6 @@ public class FeedbackRightFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         //spinner.setSelection(o_onchange);
@@ -125,7 +124,6 @@ public class FeedbackRightFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
         //Chart using MPAndroidChart
@@ -182,8 +180,8 @@ public class FeedbackRightFragment extends Fragment {
                     {  Bundle bundle = new Bundle();
                         bundle.putInt("class", spinner.getSelectedItemPosition());
                         bundle.putInt("module",spinnerModule.getSelectedItemPosition());
-                        Navigation.findNavController(v).navigate(R.id.action_fragment2_to_fragment1, bundle);
-
+                        //Navigation.findNavController(v).navigate(R.id.action_fragment2_to_fragment1, bundle);
+                        NavHostFragment.findNavController(getParentFragment()).navigate(R.id.nav_feedback, bundle);
                     }
 
                 }
@@ -222,10 +220,16 @@ public class FeedbackRightFragment extends Fragment {
         ArrayList<String> status = new ArrayList<>();
         status.add("Strongly Disagree");
         status.add("Disgree");
+        status.add("Neutral");
+        status.add("Agree");
+        status.add("Strong Agree");
         //status.add("Neutral");
         ArrayList<Integer> count = new ArrayList<>();
         count.add(5);
         count.add(4);
+        count.add(0);
+        count.add(0);
+        count.add(0);
         //count.add(1);
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
         Integer sum = 9;
@@ -253,10 +257,9 @@ public class FeedbackRightFragment extends Fragment {
         colors.add(Color.parseColor("#f2afa9"));
         colors.add(Color.parseColor("#f27c71"));
         colors.add(Color.parseColor("#FF6600"));
-        //colors.add(Color.GREEN);
-        //colors.add(Color.YELLOW);
+        colors.add(Color.parseColor("#F75536"));
+        colors.add(Color.parseColor("#FC2E05"));
         pieDataSet.setColors(colors);
-
         PieData pieData = new PieData(pieDataSet);
         pieData.setValueFormatter(new PercentFormatter());
         //pieData.setDrawValues(false);
