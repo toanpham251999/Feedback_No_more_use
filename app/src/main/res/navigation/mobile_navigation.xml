@@ -82,4 +82,13 @@
         android:id="@+id/nav_logout"
         android:name="com.example.feedbackapp.ui.logout.LogOutFragment"
         tools:layout="@layout/fragment_logout" />
+    <fragment
+        android:id="@+id/nav_add_feedback"
+        android:name="com.example.feedbackapp.ui.feedback.Add_Feedback"
+        tools:layout="@layout/fragment_add__feedback" />
+    <fragment
+        android:id="@+id/nav_review_new_feedback"
+        android:name="com.example.feedbackapp.ui.feedback.Review_NewFeedbackFragment"
+        tools:layout="@layout/fragment_review__new_feedback" />
+
 </navigation>
