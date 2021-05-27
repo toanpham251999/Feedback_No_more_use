@@ -33,7 +33,7 @@ public interface QuestionAPIServices {
     Call<ListQuestionInfo> getListQuestion(@Header("Authorization") String authToken);
 
     //service lấy danh sách các question
-    @GET
+    @GET()
     Call<QuestionInfo> getQuestion(
             @Url String url,
             @Header("Authorization") String authToken

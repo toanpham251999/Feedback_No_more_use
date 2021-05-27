@@ -55,6 +55,8 @@ public class QuestionFragment extends Fragment {
         View root = inflater.inflate(R.layout.question_fragment, container, false);
         addEvents(root);
 
+        questionList = root.findViewById(R.id.questionList);
+
 
         // Call api
         QuestionAPIServices.questionAPIServices.getListQuestion(authToken)
