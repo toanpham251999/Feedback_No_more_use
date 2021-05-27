@@ -90,5 +90,33 @@
         android:id="@+id/nav_review_new_feedback"
         android:name="com.example.feedbackapp.ui.feedback.Review_NewFeedbackFragment"
         tools:layout="@layout/fragment_review__new_feedback" />
+    <fragment
+        android:id="@+id/nav_feedbackright"
+        android:name="com.example.feedbackapp.ui.statisticfeedback.FeedbackRightFragment"
+        tools:layout="@layout/feedback_right_fragment" >
+        <action
+            android:id="@+id/action_fragment2_to_fragment1"
+            app:destination="@id/nav_feedback" />
+        <action
+            android:id="@+id/action_feedbackright_to_feedbackdetail"
+            app:destination="@id/nav_feedbackdetail" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/nav_feedbackdetail"
+        android:name="com.example.feedbackapp.ui.statisticfeedback.FeedbackDetailFragment"
+        tools:layout="@layout/fragment_feedback_detail" />
+    <action
+        android:id="@+id/action_feedbackdetail_to_feedback"
+        app:destination="@id/nav_feedback" />
+    <fragment
+        android:id="@+id/nav_dofeedback"
+        android:name="com.example.feedbackapp.ui.statisticfeedback.DoFeedbackFragment"
+        tools:layout="@layout/fragment_do_feedback" />
+    <fragment
+        android:id="@+id/nav_statisticdofeedback"
+        android:name="com.example.feedbackapp.ui.statisticfeedback.StatisticFeedBackFragment"
+        tools:layout="@layout/statistic_feedback_fragment" />
+
 
 </navigation>
