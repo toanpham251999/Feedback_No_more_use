@@ -19,9 +19,15 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.feedbackapp.ModelClassToReceiveFromAPI.Module.Module;
+import com.example.feedbackapp.ModelClassToReceiveFromAPI.Module.ModuleReturnByID;
 import com.example.feedbackapp.R;
+import com.example.feedbackapp.RetrofitAPISetvice.ModuleAPIService;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder> {
 
@@ -59,7 +65,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
         holder.txtFeedbackEndTime.setText(module.getFeedbackEndTime());
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         //khởi tạo các view con trong 1 item
         TextView txtModuleID,
                 txtModuleName,
@@ -88,9 +94,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
             btnDelete = itemView.findViewById(R.id.btn_DeleteModule);
         }
     }
-    public void EditModule(int position){
 
-    }
     public void DeleteModule(int position){
 
     }
