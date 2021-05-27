@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,7 +69,7 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
                 txtFeedbackTitle,
                 txtFeedbackStartTime,
                 txtFeedbackEndTime;
-        Button btnEdit,
+        ImageButton btnEdit,
                 btnDelete;
 
         public ViewHolder(@NonNull View itemView) {

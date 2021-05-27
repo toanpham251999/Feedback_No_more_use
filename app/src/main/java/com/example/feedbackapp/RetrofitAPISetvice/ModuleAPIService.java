@@ -30,4 +30,6 @@ public interface ModuleAPIService {
     //service lấy tất cả module
     @GET("/api/module")
     Call<ListModule> getAllModule(@Header("Authorization") String token);
+
+    //service lấy 1 module theo id
 }

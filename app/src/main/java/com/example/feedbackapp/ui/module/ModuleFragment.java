@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -47,6 +48,7 @@ public class ModuleFragment extends Fragment {
         View root = inflater.inflate(R.layout.module_fragment, container, false);
         moduleListRecycler = root.findViewById(R.id.rcv_ModuleList);
         LoadAllModule(root);
+        moduleListRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         return root;
     }
 
