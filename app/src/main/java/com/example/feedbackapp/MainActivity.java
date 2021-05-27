@@ -1,11 +1,14 @@
 package com.example.feedbackapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
 
+import com.example.feedbackapp.ModelClassToReceiveFromAPI.Assignment.Assignment;
+import com.example.feedbackapp.ui.assignment.AssignmentFragment;
 import com.example.feedbackapp.ui.feedback.FeedBackFragment;
 import com.example.feedbackapp.ui.feedback.FeedbackAdapter;
 import com.example.feedbackapp.ui.feedback.FeedbackModel;
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);// điều hướng đến  fragment nav_host_fragment trong layout content_main
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
 
 
 

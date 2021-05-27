@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spnRolePicker;
     CheckBox chkRememberMe;
     Button btnLogin;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
