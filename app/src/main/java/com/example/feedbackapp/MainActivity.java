@@ -22,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         //
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
+        ConfigNavigationView();
+        //ẩn bớt phần tử trong slide menu
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -58,13 +61,40 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    void ConfigNavigationView(){
+        //chưa dùng tới
+        UserInfo userInfo = new UserInfo(getApplicationContext());
+        String role = userInfo.role();
+
+        Menu nav_Menu = navigationView.getMenu();
+        if(role.equals("admin")){
+            //không ẩn đi gì cả, sau này sẽ ẩn Join đi
+//            nav_Menu.findItem(R.id.nav_join).setVisible(false);
+        }
+        else if(role.equals("trainer")){
+            nav_Menu.findItem(R.id.nav_enrrollment).setVisible(false);
+            nav_Menu.findItem(R.id.nav_feedback).setVisible(false);
+            nav_Menu.findItem(R.id.nav_question).setVisible(false);
+            //nav_Menu.findItem(R.id.nav_join).setVisible(false);
+        }
+        else{
+            nav_Menu.findItem(R.id.nav_assignment).setVisible(false);
+            nav_Menu.findItem(R.id.nav_enrrollment).setVisible(false);
+            nav_Menu.findItem(R.id.nav_feedback).setVisible(false);
+            nav_Menu.findItem(R.id.nav_result).setVisible(false);
+            nav_Menu.findItem(R.id.nav_question).setVisible(false);
+            //nav_Menu.findItem(R.id.nav_join).setVisible(false);
+        }
+    }
+
     //hàm này để thử xem dữ liệu như token, username, có lưu lại được không
     public void ShowUserData(){
         UserInfo userInfo = new UserInfo(getApplicationContext());
         String toastValue = "token: " + userInfo.token() +
                 "\n username: " + userInfo.username() +
                 "\n login time: " + userInfo.loginTime() +
-                "\n remember: " + userInfo.isExpired();
+                "\n remember: " + userInfo.isRemember() +
+                "\n role: " + userInfo.role();
         Toast.makeText(getApplicationContext(),toastValue,Toast.LENGTH_LONG).show();
     }
 }

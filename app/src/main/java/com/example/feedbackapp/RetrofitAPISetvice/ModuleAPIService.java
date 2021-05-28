@@ -37,4 +37,7 @@ public interface ModuleAPIService {
     //service lấy 1 module theo id
     @GET("/api/module/{id}")
     Call<ModuleReturnByID> getModule(@Path("id") String id);
+
+    //service xóa 1 module theo id
+
 }

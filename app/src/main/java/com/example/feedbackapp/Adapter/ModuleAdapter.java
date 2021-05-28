@@ -1,5 +1,6 @@
 package com.example.feedbackapp.Adapter;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,40 +56,40 @@ public class ModuleAdapter extends RecyclerView.Adapter<ModuleAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //gán dữ liệu cho từng item
         Module module = listModule.get(position);
-        holder.txtModuleID.setText(module.getId());
-        holder.txtModuleName.setText(module.getModuleName());
-        holder.txtAdminID.setText(module.getAdminId());
-        holder.txtStartDate.setText(module.getStartTime());
-        holder.txtEndDate.setText(module.getEndTime());
-        holder.txtFeedbackTitle.setText(module.getFeedbackTitle());
-        holder.txtFeedbackStartTime.setText(module.getFeedbackStartTime());
-        holder.txtFeedbackEndTime.setText(module.getFeedbackEndTime());
+        holder.txtLabelModuleID.setText(Html.fromHtml("<b>Module ID: </b>"+ module.getId()));
+        holder.txtLabelModuleName.setText(Html.fromHtml("<b>Module Name: </b>"+ module.getModuleName()));
+        holder.txtLabelAdminID.setText(Html.fromHtml("<b>Admin ID: </b>"+ module.getAdminId()));
+        holder.txtLabelStartDate.setText(Html.fromHtml("<b>Start Date: </b>"+ module.getStartTime()));
+        holder.txtLabelEndDate.setText(Html.fromHtml("<b>End Date: </b>"+ module.getEndTime()));
+        holder.txtLabelFeedbackTitle.setText(Html.fromHtml("<b>Feedback Title: </b>"+ module.getFeedbackTitle()));
+        holder.txtLabelFeedbackStartTime.setText(Html.fromHtml("<b>Feedback Start Time: </b>"+ module.getFeedbackStartTime()));
+        holder.txtLabelFeedbackEndTime.setText(Html.fromHtml("<b>Feedback End Time: </b>"+ module.getFeedbackEndTime()));
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         //khởi tạo các view con trong 1 item
-        TextView txtModuleID,
-                txtModuleName,
-                txtAdminID,
-                txtStartDate,
-                txtEndDate,
-                txtFeedbackTitle,
-                txtFeedbackStartTime,
-                txtFeedbackEndTime;
+        TextView txtLabelModuleID,
+                txtLabelModuleName,
+                txtLabelAdminID,
+                txtLabelStartDate,
+                txtLabelEndDate,
+                txtLabelFeedbackTitle,
+                txtLabelFeedbackStartTime,
+                txtLabelFeedbackEndTime;
         ImageButton btnEdit,
                 btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txtModuleID = itemView.findViewById(R.id.txt_ModuleID);
-            txtModuleName = itemView.findViewById(R.id.txt_ModuleName);
-            txtAdminID = itemView.findViewById(R.id.txt_AdminID);
-            txtStartDate = itemView.findViewById(R.id.txt_StartDate);
-            txtEndDate = itemView.findViewById(R.id.txt_endDate);
-            txtFeedbackTitle = itemView.findViewById(R.id.txt_FeedbackTitle);
-            txtFeedbackStartTime = itemView.findViewById(R.id.txt_FeedbackStartTime);
-            txtFeedbackEndTime = itemView.findViewById(R.id.txt_FeedbackEndTime);
+            txtLabelModuleID = itemView.findViewById(R.id.txt_labelModuleID);
+            txtLabelModuleName = itemView.findViewById(R.id.txt_labelModuleName);
+            txtLabelAdminID = itemView.findViewById(R.id.txt_labelAdminID);
+            txtLabelStartDate = itemView.findViewById(R.id.txt_labelStartDate);
+            txtLabelEndDate = itemView.findViewById(R.id.txt_labelendDate);
+            txtLabelFeedbackTitle = itemView.findViewById(R.id.txt_labelFeedbackTitle);
+            txtLabelFeedbackStartTime = itemView.findViewById(R.id.txt_labelFeedbackStartTime);
+            txtLabelFeedbackEndTime = itemView.findViewById(R.id.txt_labelFeedbackEndTime);
 
             btnEdit = itemView.findViewById(R.id.btn_EditModule);
             btnDelete = itemView.findViewById(R.id.btn_DeleteModule);
