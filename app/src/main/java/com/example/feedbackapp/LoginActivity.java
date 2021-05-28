@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     Spinner spnRolePicker;
     CheckBox chkRememberMe;
     Button btnLogin;
+
     LoginInfo loginInfo;
 
     @Override

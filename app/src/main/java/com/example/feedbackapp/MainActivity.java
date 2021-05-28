@@ -1,5 +1,6 @@
 package com.example.feedbackapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -10,6 +11,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Toast;
 
 
+import com.example.feedbackapp.ModelClassToReceiveFromAPI.Assignment.Assignment;
+import com.example.feedbackapp.ui.assignment.AssignmentFragment;
 import com.example.feedbackapp.ui.feedback.FeedBackFragment;
 import com.example.feedbackapp.ui.feedback.FeedbackAdapter;
 import com.example.feedbackapp.ui.feedback.FeedbackModel;
@@ -92,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
 
 
         //hiện thông tin người dùng sau khi đăng nhập, dùng để test
