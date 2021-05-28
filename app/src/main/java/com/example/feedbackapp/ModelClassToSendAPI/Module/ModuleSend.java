@@ -1,6 +1,6 @@
 package com.example.feedbackapp.ModelClassToSendAPI.Module;
 
-public class Module {
+public class ModuleSend {
 
     /**
      * Class gửi đi khác với nhận về, vì gửi đi chỉ 7 biến, nhận về 11 biến
@@ -13,7 +13,7 @@ public class Module {
     private String FeedbackStartTime;
     private String FeedbackEndTime;
 
-    public Module(String moduleName, String startTime, String endTime, Boolean adminId, String feedbackId, String feedbackStartTime, String feedbackEndTime) {
+    public ModuleSend(String moduleName, String startTime, String endTime, Boolean adminId, String feedbackId, String feedbackStartTime, String feedbackEndTime) {
         ModuleName = moduleName;
         StartTime = startTime;
         EndTime = endTime;

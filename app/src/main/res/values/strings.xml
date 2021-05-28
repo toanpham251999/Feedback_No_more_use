@@ -1,4 +1,13 @@
 <resources>
+
+    <!-- Phần này Thịnh thêm vào -->
+    <string-array name="Role_Entry">
+        <item>Admin</item>
+        <item>Trainer</item>
+        <item>Trainee</item>
+    </string-array>
+    <string name="baseUrl">https://androidserverr2s.herokuapp.com/</string>
+
     <string name="app_name">FeedBackApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -101,6 +110,7 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="SUBMIT">submit</string>
     <!-- Phần này Thịnh thêm vào -->
     <string-array name="Role_Entry">
