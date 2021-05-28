@@ -81,7 +81,6 @@ public class AssignmentFragment extends Fragment {
                 Log.d("TAG", "onFailure()");
             }
         });
-        //LoadAssignmentList();
         return root;
     }
 
@@ -123,8 +122,9 @@ public class AssignmentFragment extends Fragment {
     //Get Assignment List for Adapter
     public void LoadAssignmentList(View root){
         assignmentAdapter = new AssignmentAdapter(root.getContext(),assignmentsList);
-        assignmentListRecycler.setAdapter(assignmentAdapter);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         assignmentListRecycler.setLayoutManager(layoutManager);
+        //assignmentListRecycler.setHasFixedSize(true);
+        assignmentListRecycler.setAdapter(assignmentAdapter);
     }
 }

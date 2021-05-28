@@ -51,6 +51,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Search"
+        android:background="@drawable/boder_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_question" />
 

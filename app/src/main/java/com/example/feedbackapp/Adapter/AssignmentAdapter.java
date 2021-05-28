@@ -1,6 +1,7 @@
 package com.example.feedbackapp.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,17 +38,27 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Gán dữ liêuk
+        String Tv = "";
         Assignment assignment = listAssignment.get(position);
-        holder.textView_idAssignment.setText(assignment.getId());
-        holder.textView_moduleName.setText(assignment.getModuleName());
-        holder.textView_className.setText(assignment.getClassName());
-        holder.textView_trainerName.setText(assignment.getTrainerName());
+
+        Tv = "<b>" + holder.textView_idAssignment.getText().toString() +"</b>";
+        holder.textView_idAssignment.setText(Html.fromHtml(Tv + (position + 1)));
+
+        Tv = "<b>" + holder.textView_moduleName.getText().toString() +"</b>";
+        holder.textView_moduleName.setText(Html.fromHtml(Tv + assignment.getModuleName()));
+
+        Tv = "<b>" + holder.textView_className.getText().toString() +"</b>";
+        holder.textView_className.setText(Html.fromHtml(Tv + assignment.getClassName()));
+
+        Tv = "<b>" + holder.textView_trainerName.getText().toString() +"</b>";
+        holder.textView_trainerName.setText(Html.fromHtml(Tv + assignment.getTrainerName()));
+
         holder.textView_rCode.setText(assignment.getRegistrationCode());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listAssignment.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
